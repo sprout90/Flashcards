@@ -8,7 +8,6 @@ function DeckListItem({ deck, deleteDeck }) {
   const cards = deck.cards;
   const cardCount = cards.reduce((counter) => counter+1, 0)
 
-  console.log ("deck.name", deck.name, url)
   return (  
 
         <div className="card">

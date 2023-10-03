@@ -1,12 +1,12 @@
 import React, {useState, useEffect } from "react";
 import {Route, Switch, useRouteMatch} from "react-router-dom";
 import Header from "./Header";
-import DeckCreateButton from "../Decks/DeckCreateButton";
-import DeckList from "../Decks/DeckList";
+import Deck from "../Decks/Deck";
 import DeckView from "../Decks/DeckView";
 import DeckEdit from "../Decks/DeckEdit";
 import DeckStudy from "../Decks/DeckStudy";
 import ErrorMessage from "./ErrorMessage";
+import NotFound from "./NotFound";
 import { listDecks } from "../utils/api";
 
 
@@ -30,7 +30,6 @@ function Layout() {
     loadDecks();
 
     return () => {
-      console.log("cleanup");
       abortController.abort();
     };
   }, []);
@@ -60,28 +59,23 @@ function Layout() {
       <Header />
       <div className="container">
 
-        <div>
-          <div className="container">
-              <div className="row g-2">
-                  <DeckCreateButton createDeck={createDeck} /> 
-              </div>
-              {decks && 
-                <div className="row g-2">
-                  <DeckList decks={decks} deleteDeck={deleteDeck} />            
-                </div>
-              }
-          </div>
-        </div>
+  
 
         <Switch>
-          <Route path={`${path}/decks/:deckId/study`}>
+          <Route path={`${path}decks/:deckId/study`}>
             <DeckStudy />
           </Route>
-          <Route path={`${path}/decks/:deckId`}>
+          <Route path={`${path}decks/:deckId`}>
             <DeckView />
           </Route>
-          <Route path={`${path}/decks/new`}>
+          <Route path={`${path}decks/new`}>
             <DeckEdit />
+          </Route>
+          <Route path="/" >
+            <Deck decks={decks} createDeck={createDeck} deleteDeck={deleteDeck} />
+          </Route>
+          <Route >
+            <NotFound />
           </Route>
         </Switch>
       </div>

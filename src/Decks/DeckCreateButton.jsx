@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 function DeckCreateButton({ createDeck } ) {
   return (  <Link to={ 
-      { pathname: "./DeckEdit", 
+      { pathname: "/decks/new", 
         currentDeck: createDeck
       } } 
       >+ Create Deck</Link>  );

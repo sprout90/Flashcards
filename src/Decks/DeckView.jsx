@@ -4,6 +4,7 @@ import "../App.css";
 
 function DeckView() {
   const { deckId }  = useParams();
+  console.log("deck view", deckId);
   return (   <p> Deck View: {deckId} </p>    );
 }
 
