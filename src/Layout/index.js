@@ -59,8 +59,6 @@ function Layout() {
       <Header />
       <div className="container">
 
-  
-
         <Switch>
           <Route path={`${path}decks/:deckId/study`}>
             <DeckStudy />
