@@ -8,6 +8,7 @@ function CardStudyItem({ card, cardCount, flipEvent, nextEvent, restartEvent }) 
 
     let displayNext = false;
     let displayRestart = false;
+    const cardNumber = card.index + 1;
 
     if (card.lastCard) {
         displayNext = false;
@@ -22,7 +23,7 @@ function CardStudyItem({ card, cardCount, flipEvent, nextEvent, restartEvent }) 
 
         <div className="card">
             <div className="card-body">
-                <h5 className="card-title">Card {card.id} of {cardCount}</h5>
+                <h5 className="card-title">Card {cardNumber} of {cardCount}</h5>
                 <p className="card-text">{card.displayText}</p>
                 <FlipCardButton flipEvent={() => flipEvent()} ></FlipCardButton>
                 <NextCardButton display={displayNext} nextEvent={() => nextEvent(card.index)} key={card.index} ></NextCardButton>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../App.css";
 import { readDeck } from "../utils/api";
 import CardStudyItem from "../Cards/CardStudyItem";
@@ -32,6 +32,8 @@ function DeckStudy( ) {
         setCurrentCard(mergedCard);
       })
       .catch(setError);
+
+      return <h2>Loading Cards...</h2>
     }
 
     LoadStudyDeck();
@@ -83,7 +85,8 @@ function DeckStudy( ) {
   const restartCardsHandler = () => {
     const initCard = initializeCard(0, true, false, cards[0].front);
     const studyCard = cards[0];
-    setCurrentCard(...studyCard, ...initCard);
+    const mergedCard = {...studyCard, ...initCard};
+    setCurrentCard(mergedCard);
   };
 
   // return an initialized card object containing only supplemental state values
@@ -108,7 +111,7 @@ function DeckStudy( ) {
 
         <span>
         <div className="col-12 bg-light">
-          <span>Home 1 / </span>
+          <span><Link to="/">Home</Link> / </span>
           <span>{deck.name} / </span>
           <span>Study</span>
         </div>

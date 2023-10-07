@@ -6,7 +6,7 @@ function RestartCardsButton({ display, restartEvent }) {
   return (  
     <span>
         {display && 
-        <button className="btn p-2 border border-primary" onClick={restartEvent}>Flip </button>
+        <button className="btn p-2 border border-primary" onClick={restartEvent}>Restart </button>
         }
     </span>
   );

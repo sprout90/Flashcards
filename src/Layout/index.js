@@ -25,6 +25,7 @@ function Layout() {
       const deckPromise = listDecks(abortController.signal);
       deckPromise.then(setDecks).catch(setError);
 
+      return <h2>Loading Decks...</h2>
     }
 
     loadDecks();
