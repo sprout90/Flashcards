@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../App.css";
 import { readDeck } from "../utils/api";
 import CardStudyItem from "../Cards/CardStudyItem";
+import CreateCardButton from "../Cards/CreateCardButton";
+import BreadCrumb from "../Layout/Breadcrumb";
 import ErrorMessage from "../Layout/ErrorMessage";
 
 function DeckStudy( ) {
@@ -33,7 +35,6 @@ function DeckStudy( ) {
       })
       .catch(setError);
 
-      return <h2>Loading Cards...</h2>
     }
 
     LoadStudyDeck();
@@ -92,45 +93,56 @@ function DeckStudy( ) {
   // return an initialized card object containing only supplemental state values
   function initializeCard(cardIndex, frontFacing, lastCard, displayText){
 
-    return {index: cardIndex, frontFacing: frontFacing, lastCard: lastCard, displayText: displayText}
+    return {index: cardIndex, frontFacing: frontFacing, lastCard: lastCard, displayText: displayText, loaded: true}
   }
 
   function initializeEmptyCard(){
 
-    return {index: 0, frontFacing: true, lastCard: false, displayText: ""};
+    return {index: 0, frontFacing: true, lastCard: false, displayText: "", loaded: true};
   }
 
   const cardCount = cards.reduce((counter) => counter+1, 0)
   
   console.log("currentCard", currentCard)
 
-  return (
-    <div className="container">
-  
-      {currentCard && 
+  if (currentCard.loaded === true){
+    if (cardCount > 2) {
+        return (
+          <div className="container">
+        
+            {currentCard && 
 
-        <span>
-        <div className="col-12 bg-light">
-          <span><Link to="/">Home</Link> / </span>
-          <span>{deck.name} / </span>
-          <span>Study</span>
-        </div>
-        <div className="col-12 bg-light">
-          <h1>{deck.name}: Study</h1>
-        </div>
-        <div className="col-12">
-          <CardStudyItem 
-            card = {currentCard}
-            cardCount = {cardCount} 
-            flipEvent={flipCardHandler} 
-            nextEvent={nextCardHandler} 
-            restartEvent={restartCardsHandler}  
-          />
-        </div>
-        </span>
-      }
-    </div>
-  );
+              <span>
+                <BreadCrumb crumb2={deck.name} crumb3="Study"></BreadCrumb>
+              <div className="col-12 bg-light">
+                <h1>{deck.name}: Study</h1>
+              </div>
+              <div className="col-12">
+                <CardStudyItem 
+                  card = {currentCard}
+                  cardCount = {cardCount} 
+                  flipEvent={flipCardHandler} 
+                  nextEvent={nextCardHandler} 
+                  restartEvent={restartCardsHandler}  
+                />
+              </div>
+              </span>
+            }
+          </div>
+        );
+    } else {
+        return (
+          <div>
+            <h2>Not enough cards.</h2>
+            <p>You need at least 3 cards to study. There are {cardCount} cards in this deck.</p>
+            <CreateCardButton deckId={deck.id}></CreateCardButton>
+          </div>
+        );
+    }
+  } else {
+    return <h2>Loading cards...</h2>
+  }
+
 }
 
 export default DeckStudy;

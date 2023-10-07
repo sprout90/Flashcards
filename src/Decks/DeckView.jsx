@@ -1,11 +1,18 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useRouteMatch } from "react-router-dom";
 import "../App.css";
 
 function DeckView() {
-  const { deckId }  = useParams();
-  console.log("deck view", deckId);
-  return (   <p> Deck View: {deckId} </p>    );
+  const { id }  = useParams();
+  const { url } = useRouteMatch();
+  console.log("deck view", id);
+  return ( 
+    <div>
+    <p> Deck View: {id} </p>    
+    <p> URL: {url} </p>
+    </div>  
+    );
+
 }
 
 export default DeckView;

@@ -2,17 +2,17 @@ import React from "react";
 import DeckCreateButton from "../Decks/DeckCreateButton";
 import DeckList from "../Decks/DeckList";
 
-function Deck( {decks, createDeck, deleteDeck} ){
+function Deck( {decks, deleteDeckEvent} ){
 
     return (
         <div>
             <div className="container">
                 <div className="row g-2">
-                    <DeckCreateButton createDeck={createDeck} /> 
+                    <DeckCreateButton /> 
                 </div>
                 {decks && 
                 <div className="row g-2">
-                    <DeckList decks={decks} deleteDeck={deleteDeck} />            
+                    <DeckList decks={decks} deleteDeckEvent={deleteDeckEvent} />            
                 </div>
                 }
             </div>
