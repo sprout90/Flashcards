@@ -3,11 +3,11 @@ import {Link, useParams, useRouteMatch, useHistory} from "react-router-dom";
 import Breadcrumb from "../Layout/Breadcrumb";
 
 function DeckEdit({ createDeckEvent }) {
-  const {deckId} = useParams();
+  //const {deckId} = useParams();
   const { path } = useRouteMatch();
   const history = useHistory();
+  
  
-
    // define inital form state object 
    const initialFormState = {
     name: "",
@@ -34,7 +34,7 @@ function DeckEdit({ createDeckEvent }) {
       <form name="create" onSubmit={(event) => {
           event.preventDefault();
           const deckId = createDeckEvent(formData);
-          console.log("deck edit", deckId)
+          console.log("deck post edit", deckId)
           history.push(`/decks/${deckId}`)
         } }
       >
