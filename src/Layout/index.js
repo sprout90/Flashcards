@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from "react";
-import {Route, Switch, useRouteMatch, useNavigate} from "react-router-dom";
+import {Route, Switch, useRouteMatch} from "react-router-dom";
 import Header from "./Header";
 import Deck from "../Decks/Deck";
 import DeckView from "../Decks/DeckView";
@@ -16,7 +16,6 @@ function Layout() {
   const [decks, setDecks] = useState([]);
   const [deckId, setDeckId] = useState(undefined);
   const [error, setError] = useState(undefined);
-  const navigate = useNavigate();
   
   useEffect(() => {
 
@@ -41,27 +40,37 @@ function Layout() {
     return <ErrorMessage error={error}></ErrorMessage>;
   }
 
+  // If deckId changes, redirect to ../Decks/DeckView
+  /* useEffect(() => {
+    const history = useHistory();
+    history.push(`../decks/${deckId}`)
+  }, deckId );
+  */
+
  // define event actions for create and delete
  const createDeckHandler = (newDeck) => {
    console.log("saving deck", newDeck)
    const abortController = new AbortController();
 
-   const deckPromise = createDeck(newDeck, abortController.signal);
-    deckPromise.then((result) => {
-    // add new deck (with id) to end of list, and set state
-    newDeck.id = result.id;
+  
+    const deckPromise = createDeck(newDeck, abortController.signal);
+      return deckPromise.then((result) => {
+        // add new deck (with id) to end of list, and set state
+        newDeck.id = result.id;
+        console.log("layout deckid", newDeck.id)
+        const currentDecks = [...decks, newDeck];
+        setDecks(currentDecks); 
+        setDeckId(newDeck.id);
+        return newDeck.Id;
+      })
+      .catch(setError)
+ 
 
-    const currentDecks = [...decks, newDeck];
-    setDecks(currentDecks); 
-    setDeckId(newDeck.id);
-    navigate(`/decks/${newDeck.id}`);
-   })
-    .catch(setError);
-
-    return () => {
+    /*return () => {
       abortController.abort();
-    };
+    };*/
  };
+ 
 
  const deleteDeckHandler = (indexToDelete) => {
 

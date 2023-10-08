@@ -19,6 +19,51 @@
       "name": "deck attempt",
       "description": "deck attempt desc",
       "id": 4
+    },
+    {
+      "name": "Sunday deck",
+      "description": "This is a deck for sunday",
+      "id": 5
+    },
+    {
+      "name": "Networking",
+      "description": "Deck about networking",
+      "id": 6
+    },
+    {
+      "name": "headphones",
+      "description": "deck about headphones",
+      "id": 7
+    },
+    {
+      "name": "Cats",
+      "description": "Deck about cats",
+      "id": 8
+    },
+    {
+      "name": "beverages",
+      "description": "deck about beverages",
+      "id": 9
+    },
+    {
+      "name": "medicine",
+      "description": "deck about medicine",
+      "id": 10
+    },
+    {
+      "name": "glasses",
+      "description": "deck about glasses",
+      "id": 11
+    },
+    {
+      "name": "bottles",
+      "description": "deck about bottles",
+      "id": 12
+    },
+    {
+      "name": "lights",
+      "description": "deck about lights",
+      "id": 13
     }
   ],
   "cards": [
