@@ -33,9 +33,7 @@ function DeckEdit({ createDeckEvent }) {
       </div>
       <form name="create" onSubmit={(event) => {
           event.preventDefault();
-          const deckId = createDeckEvent(formData);
-          console.log("deck post edit", deckId)
-          history.push(`/decks/${deckId}`)
+          createDeckEvent(formData);
         } }
       >
           <label htmlFor="name">Name<br/>

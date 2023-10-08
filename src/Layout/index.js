@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from "react";
-import {Route, Switch, useRouteMatch} from "react-router-dom";
+import {Route, Switch, useRouteMatch, useHistory} from "react-router-dom";
 import Header from "./Header";
 import Deck from "../Decks/Deck";
 import DeckView from "../Decks/DeckView";
@@ -17,6 +17,7 @@ function Layout() {
   const [deckId, setDeckId] = useState(undefined);
   const [error, setError] = useState(undefined);
   const [navUrl, setNavUrl] = useState(undefined);
+  const history = useHistory();
   
   useEffect(() => {
 
@@ -37,7 +38,11 @@ function Layout() {
     };
   }, []);
 
+  /*useEffect(() => {
   
+    history.push(navUrl)
+  }, navUrl)
+  */
 
  // define event actions for create and delete
  const createDeckHandler = (newDeck) => {
@@ -50,11 +55,12 @@ function Layout() {
         // add new deck (with id) to end of list, and set state
         newDeck.id = result.id;
         console.log("layout deckid", newDeck.id)
-        setNavUrl(`/decks/${newDeck.id}`);
+        const url = `/decks/${newDeck.id}`
+        setNavUrl(url);
         const currentDecks = [...decks, newDeck];
         setDecks(currentDecks); 
         setDeckId(newDeck.id);
-        
+        history.push(url);
       })
       .catch(setError);
  

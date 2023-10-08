@@ -134,6 +134,16 @@
       "name": "software",
       "description": "deck about software",
       "id": 27
+    },
+    {
+      "name": "assignments",
+      "description": "this is a deck of assignments",
+      "id": 28
+    },
+    {
+      "name": "water",
+      "description": "deck in water supply",
+      "id": 29
     }
   ],
   "cards": [
