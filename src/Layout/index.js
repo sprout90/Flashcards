@@ -16,7 +16,6 @@ function Layout() {
   const [decks, setDecks] = useState([]);
   const [deckId, setDeckId] = useState(undefined);
   const [error, setError] = useState(undefined);
-  const [navUrl, setNavUrl] = useState(undefined);
   const history = useHistory();
   
   useEffect(() => {
@@ -38,25 +37,16 @@ function Layout() {
     };
   }, []);
 
-  /*useEffect(() => {
-  
-    history.push(navUrl)
-  }, navUrl)
-  */
-
  // define event actions for create and delete
  const createDeckHandler = (newDeck) => {
-   console.log("saving deck", newDeck)
-   const abortController = new AbortController();
 
-  
+    const abortController = new AbortController(); 
+
     const deckPromise = createDeck(newDeck, abortController.signal);
        deckPromise.then((result) => {
         // add new deck (with id) to end of list, and set state
         newDeck.id = result.id;
-        console.log("layout deckid", newDeck.id)
         const url = `/decks/${newDeck.id}`
-        setNavUrl(url);
         const currentDecks = [...decks, newDeck];
         setDecks(currentDecks); 
         setDeckId(newDeck.id);
@@ -84,7 +74,7 @@ const saveDeckHandler = (saveDeck) => {
        // update deck and set state
        //newDeck.id = result.id;
        console.log("layout deckid", saveDeck.id)
-       setNavUrl(`/decks/${saveDeck.id}`);
+   
 
       // TODO: add logic to update existing deck in array
       // possibly replacing the currentDecks assignment. 
@@ -102,7 +92,7 @@ const saveDeckHandler = (saveDeck) => {
 };
 
 
- const deleteDeckHandler = (indexToDelete) => {
+ const deleteDeckHandler = (deckId, indexToDelete) => {
 
    // remove deck where not equal to received indexToDelete parameter, and set state
    const currentDecks = decks.filter((deck, index) => index !== indexToDelete);
@@ -123,13 +113,13 @@ const saveDeckHandler = (saveDeck) => {
             <DeckStudy />
           </Route>
           <Route path={`${path}decks/:deckId/edit`}>
-            <DeckEdit id={deckId} createDeckEvent={createDeckHandler} saveDeckEvent={saveDeckHandler}/>
+            <DeckEdit deckId={deckId} createDeckEvent={createDeckHandler} saveDeckEvent={saveDeckHandler}/>
           </Route>
           <Route path={`${path}decks/:deckId/cards/new`}>
             <CardEdit />
           </Route>
           <Route path={`${path}decks/:deckId`}>
-            <DeckView id={deckId} />
+            <DeckView deckId={deckId} deleteDeckEvent={deleteDeckHandler} />
           </Route>
           <Route path="/" >
             <Deck decks={decks} deleteDeckEvent={deleteDeckHandler} />

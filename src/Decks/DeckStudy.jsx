@@ -103,8 +103,6 @@ function DeckStudy( ) {
 
   const cardCount = cards.reduce((counter) => counter+1, 0)
   
-  console.log("currentCard", currentCard)
-
   if (currentCard.loaded === true){
     if (cardCount > 2) {
         return (
@@ -140,7 +138,7 @@ function DeckStudy( ) {
         );
     }
   } else {
-    return <h2>Loading cards...</h2>
+    return <h4>Loading cards...</h4>
   }
 
 }

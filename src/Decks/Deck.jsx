@@ -10,11 +10,9 @@ function Deck( {decks, deleteDeckEvent} ){
                 <div className="row g-2">
                     <DeckCreateButton /> 
                 </div>
-                {decks && 
                 <div className="row g-2">
                     <DeckList decks={decks} deleteDeckEvent={deleteDeckEvent} />            
                 </div>
-                }
             </div>
         </div>
     );

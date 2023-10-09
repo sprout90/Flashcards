@@ -5,12 +5,21 @@ import "../App.css";
 
 function DeckList({ decks, deleteDeckEvent }) {
 
-  
-    return ( 
-        decks.map((deck, index) =>  
-            <DeckListItem deck={deck} deleteDeck={() => deleteDeckEvent(index)} key={index}/>
-        )
-    );
+    if (decks.length > 0) {
+        return ( 
+            decks.map((deck, index) =>  
+                //<DeckListItem deck={deck} deleteDeck={() => deleteDeckEvent(index)} key={index}/>
+                <DeckListItem deck={deck} deleteDeckEvent={deleteDeckEvent} key={index} index={index}/>
+            )
+        );
+    } else {
+        return (
+            <div className="container">
+                <br/>
+                <h4>Loading decks...</h4>
+            </div>
+        );
+    }
 }
 
 export default DeckList;
