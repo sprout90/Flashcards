@@ -8,7 +8,7 @@ import DeckStudy from "../Decks/DeckStudy";
 import CardEdit from "../Cards/CardEdit";
 import ErrorMessage from "./ErrorMessage";
 import NotFound from "./NotFound";
-import { listDecks, createDeck, updateDeck, createCard, updateCard } from "../utils/api";
+import { listDecks, createDeck, updateDeck, deleteDeck, createCard, updateCard } from "../utils/api";
 
 
 function Layout() {
@@ -65,11 +65,9 @@ function Layout() {
 
 // define event actions for create and delete
 const saveDeckHandler = (saveDeck) => {
-  console.log("updating deck", saveDeck)
   const abortController = new AbortController();
-
  
-   const deckPromise = updateDeck(saveDeck, abortController.signal);
+  const deckPromise = updateDeck(saveDeck, abortController.signal);
       deckPromise.then((result) => history.goBack())
       .catch(setError);
 
@@ -81,9 +79,21 @@ const saveDeckHandler = (saveDeck) => {
 
  const deleteDeckHandler = (deckId, indexToDelete) => {
 
-   // remove deck where not equal to received indexToDelete parameter, and set state
-   const currentDecks = decks.filter((deck, index) => index !== indexToDelete);
-   setDecks(currentDecks); 
+  // remove deck from array and set state
+  const currentDecks = decks.filter((deck, index) => index !== indexToDelete);
+  setDecks(currentDecks); 
+
+  // remove deck from database
+  const abortController = new AbortController();
+ 
+  const deckPromise = deleteDeck(deckId, abortController.signal);
+      deckPromise.then().catch(setError);
+
+   return () => {
+     abortController.abort();
+   };
+
+   
  };
 
 

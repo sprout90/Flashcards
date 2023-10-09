@@ -36,11 +36,6 @@
       "id": 7
     },
     {
-      "name": "Cats",
-      "description": "Deck about cats",
-      "id": 8
-    },
-    {
       "name": "beverages",
       "description": "deck about beverages",
       "id": 9
@@ -121,34 +116,14 @@
       "id": 24
     },
     {
-      "name": "bills",
-      "description": "deck about bills",
-      "id": 25
-    },
-    {
-      "name": "routers",
-      "description": "deck about routers",
-      "id": 26
-    },
-    {
       "name": "software",
       "description": "deck about software",
       "id": 27
     },
     {
-      "name": "assignments",
-      "description": "this is a deck of assignments",
-      "id": 28
-    },
-    {
       "id": 29,
       "name": "Water",
       "description": "deck in water supply (h20)  \nexplaining that water is the essence of survival"
-    },
-    {
-      "id": -1,
-      "name": "Deck with Edit",
-      "description": "This is the deck page with edit ability"
     }
   ],
   "cards": [

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Link, useParams, useRouteMatch, useHistory} from "react-router-dom";
+import { useParams, useRouteMatch, useHistory} from "react-router-dom";
 import Breadcrumb from "../Layout/Breadcrumb";
 import { readDeck } from "../utils/api";
 
@@ -12,8 +12,7 @@ function DeckEdit({ createDeckEvent, saveDeckEvent }) {
   let crumb2;
   let crumb3; 
   let title;
-  let cancelPath;
-  
+
   // define inital form state object 
   const initialFormState = {
     name: "",

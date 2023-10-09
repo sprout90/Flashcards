@@ -8,7 +8,7 @@ function DeckListItem({ deck, deleteDeckEvent, index }) {
 
   const cards = deck.cards;
   const cardCount = cards.reduce((counter) => counter+1, 0)
-
+ 
   return (  
 
         <div className="card col-12">
@@ -35,7 +35,7 @@ function DeckListItem({ deck, deleteDeckEvent, index }) {
                     <DeckStudyButton deckId={deck.id}></DeckStudyButton>
                   </div>
                   <div className="col-3">
-                    <DeckDeleteButton deleteDeck={() => deleteDeckEvent(index)} ></DeckDeleteButton>
+                    <DeckDeleteButton deleteDeckEvent={() => deleteDeckEvent(deck.id, index)} ></DeckDeleteButton>
                   </div>
                 </div>
             </div>

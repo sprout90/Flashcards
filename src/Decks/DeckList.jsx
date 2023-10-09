@@ -8,7 +8,6 @@ function DeckList({ decks, deleteDeckEvent }) {
     if (decks.length > 0) {
         return ( 
             decks.map((deck, index) =>  
-                //<DeckListItem deck={deck} deleteDeck={() => deleteDeckEvent(index)} key={index}/>
                 <DeckListItem deck={deck} deleteDeckEvent={deleteDeckEvent} key={index} index={index}/>
             )
         );
