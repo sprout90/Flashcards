@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useRouteMatch, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../App.css";
 import BreadCrumb from "../Layout/Breadcrumb";
 import DeckDeleteButton from "./DeckDeleteButton";
@@ -12,7 +12,6 @@ import { readDeck } from "../utils/api";
 function DeckView( { deleteDeckEvent, index } ) {
  
   const {deckId} = useParams(); 
-  const { url } = useRouteMatch();
   const [deck, setDeck] = useState({});
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(undefined);

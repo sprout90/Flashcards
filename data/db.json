@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Rendering in React",
-      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
+      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation.  "
     },
     {
       "name": "React Router",
@@ -141,9 +141,14 @@
       "id": 28
     },
     {
-      "name": "water",
-      "description": "deck in water supply",
-      "id": 29
+      "id": 29,
+      "name": "Water",
+      "description": "deck in water supply (h20)  \nexplaining that water is the essence of survival"
+    },
+    {
+      "id": -1,
+      "name": "Deck with Edit",
+      "description": "This is the deck page with edit ability"
     }
   ],
   "cards": [

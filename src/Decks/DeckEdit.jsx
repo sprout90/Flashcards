@@ -1,39 +1,84 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Link, useParams, useRouteMatch, useHistory} from "react-router-dom";
 import Breadcrumb from "../Layout/Breadcrumb";
+import { readDeck } from "../utils/api";
 
-function DeckEdit({ createDeckEvent }) {
-  //const {deckId} = useParams();
+function DeckEdit({ createDeckEvent, saveDeckEvent }) {
+  const {deckId} = useParams();
   const { path } = useRouteMatch();
   const history = useHistory();
+  const {error, setError} = useState(undefined);
   
- 
-   // define inital form state object 
-   const initialFormState = {
+  let crumb2;
+  let crumb3; 
+  let title;
+  let cancelPath;
+  
+  // define inital form state object 
+  const initialFormState = {
     name: "",
     description: "",
   };
-
-  // define formData state object
   const [formData, setFormData] = useState({ ...initialFormState });
-  const title = (path === "/decks/new") ? "Create Deck" : "Edit Deck";
+
+  // populate primary deck and card stack properties
+    useEffect(() => {
+
+    // retrieve decks with cards, and store the DeckData arry in useState
+    const abortController = new AbortController();
+
+      function LoadDeck(){
+        const deckPromise = readDeck(deckId, abortController.signal);
+        deckPromise.then((result) => {
+          const deck = {id : result.id, name: result.name, description: result.description};
+          setFormData(deck);   
+        })
+        .catch(setError);
+
+    }
+
+    if (deckId){
+      LoadDeck();
+    }
+
+    return () => {
+      abortController.abort();
+    };
+  }, []);
 
  
+  if (path === "/decks/new"){
+    crumb2 = "Create Deck"
+    title = "Create Deck"
+  } else {
+    crumb2 = formData.name;
+    crumb3 =  "Edit Deck";
+    title = "Edit Deck"
+  }
+   
   // define event handlers for field-level change, and form submit
   const handleChange = ({ target }) => { 
     setFormData({ ...formData, [target.name]: target.value, 
     });  
   };
 
+  const cancelButton = () => {
+    history.goBack();
+  }
+
   return ( 
     <div>
-      <Breadcrumb crumb2={title}></Breadcrumb>
+      <Breadcrumb crumb2={crumb2} crumb3={crumb3}></Breadcrumb>
       <div>
         <h1>{title}</h1>
       </div>
       <form name="create" onSubmit={(event) => {
           event.preventDefault();
-          createDeckEvent(formData);
+          if (!(deckId)){
+            createDeckEvent(formData);
+          } else {
+            saveDeckEvent(formData)
+          }
         } }
       >
           <label htmlFor="name">Name<br/>
@@ -59,7 +104,7 @@ function DeckEdit({ createDeckEvent }) {
               required={true}/>
             </label>
           <div>
-            <Link to="/" className="btn btn-primary">Cancel</Link>
+            <button onClick={cancelButton} className="btn btn-primary">Cancel</button>
             &nbsp;
             <button type="submit" className="btn btn-secondary">Submit</button>
           </div>

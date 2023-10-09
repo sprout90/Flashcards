@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 
 function Breadcrumb({crumb2, crumb3}){
 
-    // crumb2 and crumb3 is optional, only display slash when defined.
-    const slash2 = (crumb3) ? " / " : " ";
+    let slash2; 
+
+    // crumb2 and crumb3 is optional, only display slash both defined.
+    if ((crumb2 == undefined) || (crumb3 == undefined)){
+        slash2 = " ";
+    } else {
+        slash2 = " / "
+    }
 
     return (
         <div className="col-12 bg-light">

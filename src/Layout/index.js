@@ -8,7 +8,7 @@ import DeckStudy from "../Decks/DeckStudy";
 import CardEdit from "../Cards/CardEdit";
 import ErrorMessage from "./ErrorMessage";
 import NotFound from "./NotFound";
-import { listDecks, createDeck, updateDeck } from "../utils/api";
+import { listDecks, createDeck, updateDeck, createCard, updateCard } from "../utils/api";
 
 
 function Layout() {
@@ -70,21 +70,8 @@ const saveDeckHandler = (saveDeck) => {
 
  
    const deckPromise = updateDeck(saveDeck, abortController.signal);
-      deckPromise.then((result) => {
-       // update deck and set state
-       //newDeck.id = result.id;
-       console.log("layout deckid", saveDeck.id)
-   
-
-      // TODO: add logic to update existing deck in array
-      // possibly replacing the currentDecks assignment. 
-
-       const currentDecks = [...decks, saveDeck];
-       setDecks(currentDecks); 
-       setDeckId(saveDeck.id);
-       
-     })
-     .catch(setError);
+      deckPromise.then((result) => history.goBack())
+      .catch(setError);
 
    return () => {
      abortController.abort();
@@ -104,8 +91,16 @@ const saveDeckHandler = (saveDeck) => {
 
  }
 
- const saveCardHandler = (cardId) => {
+ const saveCardHandler = (deckId, saveCard) => {
+  console.log("updating card", saveCard)
+  const abortController = new AbortController();
 
+   const cardPromise = updateCard(deckId, saveCard, abortController.signal);
+      cardPromise.then().catch(setError);
+
+   return () => {
+     abortController.abort();
+   };
  }
 
 

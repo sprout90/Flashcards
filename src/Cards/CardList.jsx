@@ -15,10 +15,11 @@ function CardList({ deckId, cards, deleteCardEvent }) {
         return (
             <div className="container">
                 <br/>
-                <h4>Loading ...</h4>
+                <h5>No cards defined. Please add some.</h5>
             </div>
         );
     }
+    
 }
 
 export default CardList;
