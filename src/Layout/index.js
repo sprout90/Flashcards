@@ -100,12 +100,30 @@ const saveDeckHandler = (saveDeck) => {
  };
 
 
+ const createCardHandler = () => {
+
+ }
+
+ const saveCardHandler = (cardId) => {
+
+ }
+
+
+
+
   return (
     <div>
       <Header />
       <div className="container">
         
         <Switch>
+          <Route path={`${path}decks/:deckId/cards/new`}>
+            <CardEdit createCardEvent={createCardHandler} saveCardEvent={saveCardHandler}/>
+          </Route>
+          <Route path={`${path}decks/:deckId/cards/:cardId`}>
+            <CardEdit createCardEvent={createCardHandler} saveCardEvent={saveCardHandler} deckId={deckId}/>
+          </Route>
+
           <Route path={`${path}decks/new`}>
             <DeckEdit createDeckEvent={createDeckHandler} saveDeckEvent={saveDeckHandler} deckId={deckId}/>
           </Route>
@@ -114,9 +132,6 @@ const saveDeckHandler = (saveDeck) => {
           </Route>
           <Route path={`${path}decks/:deckId/edit`}>
             <DeckEdit deckId={deckId} createDeckEvent={createDeckHandler} saveDeckEvent={saveDeckHandler}/>
-          </Route>
-          <Route path={`${path}decks/:deckId/cards/new`}>
-            <CardEdit />
           </Route>
           <Route path={`${path}decks/:deckId`}>
             <DeckView deckId={deckId} deleteDeckEvent={deleteDeckHandler} />

@@ -1,13 +1,13 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 
-function DeckDeleteButton({ deleteDeckEvent, deckId, index }){
+function CardDeleteButton({ deleteCardEvent, cardId, index }){
     const history = useHistory();
 
     return (
         <button name="delete" onClick={() => {
-            if (window.confirm("Delete this deck?\nYou will not be able to recover it.")){
-                deleteDeckEvent(deckId, index);
+            if (window.confirm("Delete this card?\nYou will not be able to recover it.")){
+                deleteCardEvent(cardId, index);
                 history.push("/");
                 } 
             }} className="btn btn-danger p-2">
@@ -20,4 +20,4 @@ function DeckDeleteButton({ deleteDeckEvent, deckId, index }){
 
 }
 
-export default DeckDeleteButton;
+export default CardDeleteButton;
