@@ -35,7 +35,7 @@ function DeckListItem({ deck, deleteDeckEvent, index }) {
                     <DeckStudyButton deckId={deck.id}></DeckStudyButton>
                   </div>
                   <div className="col-3">
-                    <DeckDeleteButton deleteDeckEvent={() => deleteDeckEvent(deck.id, index)} ></DeckDeleteButton>
+                    <DeckDeleteButton deleteDeckEvent={() => deleteDeckEvent(deck.id)} ></DeckDeleteButton>
                   </div>
                 </div>
             </div>

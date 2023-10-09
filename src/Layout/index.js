@@ -77,22 +77,21 @@ const saveDeckHandler = (saveDeck) => {
 };
 
 
- const deleteDeckHandler = (deckId, indexToDelete) => {
+ const deleteDeckHandler = (deckId) => {
 
-  // remove deck from array and set state
-  const currentDecks = decks.filter((deck, index) => index !== indexToDelete);
-  setDecks(currentDecks); 
-
+  const currentDecks = decks.filter((deck, index) => deck.id != deckId);
+  
   // remove deck from database
   const abortController = new AbortController();
- 
-  const deckPromise = deleteDeck(deckId, abortController.signal);
-      deckPromise.then().catch(setError);
+  const deckDeckPromise = deleteDeck(deckId, abortController.signal);
+    deckDeckPromise.then().catch(setError);
 
-   return () => {
+  // update deck array and kick-off reload
+  setDecks(currentDecks); 
+  
+  return () => {
      abortController.abort();
    };
-
    
  };
 

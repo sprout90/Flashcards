@@ -70,7 +70,7 @@ const deleteCardHandler = (cardId, indexToDelete) => {
           <CreateCardButton deckId={deckId}></CreateCardButton>
         </div>
         <div className="col-3 d-flex justify-content-end">
-          <DeckDeleteButton deleteDeckEvent={() => deleteDeckEvent(deckId, index)}></DeckDeleteButton>
+          <DeckDeleteButton deleteDeckEvent={() => deleteDeckEvent(deckId)}></DeckDeleteButton>
         </div>
         <div className="col-12">
           <br/>

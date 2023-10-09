@@ -1,13 +1,13 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 
-function DeckDeleteButton({ deleteDeckEvent, deckId, index }){
+function DeckDeleteButton({ deleteDeckEvent, deckId }){
     const history = useHistory();
 
     return (
         <button name="delete" onClick={() => {
             if (window.confirm("Delete this deck?\nYou will not be able to recover it.")){
-                deleteDeckEvent(deckId, index);
+                deleteDeckEvent(deckId);
                 history.push("/");
                 } 
             }} className="btn btn-danger p-2">

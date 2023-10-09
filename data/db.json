@@ -11,114 +11,14 @@
       "id": 2
     },
     {
-      "name": "hello",
-      "description": "deck desc",
-      "id": 3
-    },
-    {
-      "name": "deck attempt",
-      "description": "deck attempt desc",
-      "id": 4
-    },
-    {
-      "name": "Sunday deck",
-      "description": "This is a deck for sunday",
-      "id": 5
-    },
-    {
-      "name": "Networking",
-      "description": "Deck about networking",
-      "id": 6
-    },
-    {
-      "name": "headphones",
-      "description": "deck about headphones",
-      "id": 7
-    },
-    {
-      "name": "beverages",
-      "description": "deck about beverages",
-      "id": 9
-    },
-    {
-      "name": "medicine",
-      "description": "deck about medicine",
-      "id": 10
-    },
-    {
-      "name": "glasses",
-      "description": "deck about glasses",
-      "id": 11
-    },
-    {
-      "name": "bottles",
-      "description": "deck about bottles",
-      "id": 12
-    },
-    {
-      "name": "lights",
-      "description": "deck about lights",
-      "id": 13
-    },
-    {
-      "name": "books",
-      "description": "deck about books",
-      "id": 14
-    },
-    {
       "name": "computers",
       "description": "deck about computers",
       "id": 15
     },
     {
-      "name": "banks",
-      "description": "deck about banks",
-      "id": 16
-    },
-    {
-      "name": "spyware deck",
-      "description": "Deck about spyware",
-      "id": 17
-    },
-    {
-      "name": "notebooks",
-      "description": "deck about notebooks",
-      "id": 18
-    },
-    {
-      "name": "human deck",
-      "description": "deck about humans",
-      "id": 19
-    },
-    {
-      "name": "test deck",
-      "description": "another test deck",
-      "id": 20
-    },
-    {
-      "name": "guns",
-      "description": "deck about guns",
-      "id": 21
-    },
-    {
-      "name": "trees",
-      "description": "deck about trees",
-      "id": 22
-    },
-    {
       "name": "monitors",
       "description": "deck about monitors",
       "id": 23
-    },
-    {
-      "name": "soda",
-      "description": "deck about soda",
-      "id": 24
-    },
-    {
-      "name": "software",
-      "description": "deck about software",
-      "id": 27
     },
     {
       "id": 29,
