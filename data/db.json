@@ -61,7 +61,7 @@
       "id": 7,
       "front": "b",
       "back": "b",
-      "deckId": "1"
+      "deckId": 1
     },
     {
       "front": "computer front",
@@ -100,10 +100,10 @@
       "id": 13
     },
     {
-      "front": "what are monitors",
-      "back": "displays for computers",
-      "deckId": 23,
-      "id": 14
+      "id": 14,
+      "front": "what are computer monitors ",
+      "back": "output of displays for computer ",
+      "deckId": 23
     },
     {
       "front": "what colors do monitors support",
@@ -118,10 +118,10 @@
       "id": 16
     },
     {
-      "front": "this is the front",
-      "back": "this is the back",
-      "deckId": 23,
-      "id": 17
+      "id": 17,
+      "front": "this is the front 2",
+      "back": "this is the back 2",
+      "deckId": 23
     },
     {
       "front": "form data from of card",
@@ -139,7 +139,7 @@
       "id": 29,
       "front": "what is water",
       "back": "h2o is the chemical makeup",
-      "deckId": "29"
+      "deckId": 29
     },
     {
       "id": 30,
@@ -150,18 +150,13 @@
       "id": 31,
       "front": "water test front",
       "back": "water test back",
-      "deckId": "29"
-    },
-    {
-      "id": 32,
-      "front": "do you like water (front)",
-      "back": "yes, we can swim in it (back)"
+      "deckId": 29
     },
     {
       "id": 33,
       "front": "monitor card front",
       "back": "monitor card back",
-      "deckId": "23"
+      "deckId": 23
     }
   ]
 }

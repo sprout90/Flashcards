@@ -114,7 +114,7 @@ const saveDeckHandler = (saveDeck) => {
  }
 
  const saveCardHandler = (deckId, saveCard) => {
-  saveCard.deckId = deckId;
+  saveCard.deckId = parseInt(deckId);
   console.log("updating card", saveCard)
   const abortController = new AbortController();
 
