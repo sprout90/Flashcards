@@ -46,6 +46,7 @@ function DeckStudy( ) {
 
   if (error) {
     return (<div>
+      <h1>{deck.name}</h1>
       <h2>Not enough cards.</h2>
       <p>You need at least 3 cards to study. There are 0 cards in this deck.</p>
       <CreateCardButton deckId={deck.id}></CreateCardButton>
@@ -138,6 +139,7 @@ function DeckStudy( ) {
   } else { if ((cardCount != undefined) && (cardCount <= 2))
     return (
       <div>
+        <h1>{deck.name}</h1>
         <h2>Not enough cards.</h2>
         <p>You need at least 3 cards to study. There are {cardCount} cards in this deck.</p>
         <CreateCardButton deckId={deck.id}></CreateCardButton>
