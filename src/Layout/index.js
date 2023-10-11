@@ -154,7 +154,7 @@ const saveDeckHandler = (saveDeck) => {
           <Route path={`${path}decks/:deckId`}>
             <DeckView deckId={deckId} deleteDeckEvent={deleteDeckHandler} />
           </Route>
-          <Route path="/" >
+          <Route exact path="/" >
             <Deck decks={decks} deleteDeckEvent={deleteDeckHandler} />
           </Route>
           <Route >

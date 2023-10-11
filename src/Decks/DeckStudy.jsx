@@ -5,7 +5,6 @@ import { readDeck } from "../utils/api";
 import CardStudyItem from "../Cards/CardStudyItem";
 import CreateCardButton from "../Cards/CreateCardButton";
 import BreadCrumb from "../Layout/Breadcrumb";
-import ErrorMessage from "../Layout/ErrorMessage";
 
 function DeckStudy( ) {
   const { deckId } = useParams();

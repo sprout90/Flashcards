@@ -158,6 +158,7 @@ describe("Decks", () => {
     );
 
     const deckNameElements = await screen.findAllByText("Mock squash");
+    console.log("testing cards new with deckname elements", deckNameElements)
     expect(deckNameElements.length).toBeGreaterThanOrEqual(1);
 
     const titleElements = await screen.findAllByText("Add Card");

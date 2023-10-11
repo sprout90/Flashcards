@@ -28,7 +28,7 @@ function CardEdit({ createCardEvent, saveCardEvent }) {
     location.state.reload = false;
     
     setFormData({ ...initialFormState });
-    console.log("reseting state", formData.front)
+  
   }
 
   // populate primary deck and card stack properties
@@ -97,10 +97,7 @@ function CardEdit({ createCardEvent, saveCardEvent }) {
     history.push(`/decks/${deckId}`);
   }
 
-  console.log("reloading page", formData);
-  console.log("params", useParams());
-  console.log("formData.front", formData.front);
-  
+ 
   return ( 
     <div>
       <Breadcrumb crumb2={crumb2} crumb3={crumb3}></Breadcrumb>
@@ -110,15 +107,13 @@ function CardEdit({ createCardEvent, saveCardEvent }) {
       <form name="create" onSubmit={(event) => {
           event.preventDefault();
           if (saveBtnText == "Save"){
-            console.log("add new card")
             createCardEvent(deckId, formData);
           } else {
-            console.log("update card")
             saveCardEvent(deckId, formData)
           }
         } }
       >
-          <label htmlFor="name">Name<br/>
+          <label htmlFor="front">Front<br/>
             <textarea 
                 id="front" 
                 name="front" 
