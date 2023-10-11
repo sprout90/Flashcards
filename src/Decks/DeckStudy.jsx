@@ -3,15 +3,17 @@ import { useParams } from "react-router-dom";
 import "../App.css";
 import { readDeck } from "../utils/api";
 import CardStudyItem from "../Cards/CardStudyItem";
+import CreateCardButton from "../Cards/CreateCardButton";
 import BreadCrumb from "../Layout/Breadcrumb";
 import ErrorMessage from "../Layout/ErrorMessage";
 
 function DeckStudy( ) {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState(undefined);
   const [currentCard, setCurrentCard] = useState(undefined);
   const [error, setError] = useState(undefined);
+  let cardCount;
 
   // populate primary deck and card stack properties
   useEffect(() => {
@@ -98,31 +100,48 @@ function DeckStudy( ) {
     return {index: 0, frontFacing: true, lastCard: false, displayText: ""};
   }
 
-  const cardCount = cards.reduce((counter) => counter+1, 0)
+  if (cards !== undefined){
+    cardCount = cards.reduce((counter) => counter+1, 0);
+  } else {
+    cardCount = undefined;
+  }
 
-  return (
-    <div className="container">
-  
-      {currentCard && 
+  if ((cardCount != undefined) && (cardCount > 2)){
+    return (
+    
+      <div className="container">
+    
+        {currentCard && 
 
-        <span>
-          <BreadCrumb crumb2={deck.name} crumb3="Study"></BreadCrumb>
-        <div className="col-12 bg-light">
-          <h1>{deck.name}: Study</h1>
-        </div>
-        <div className="col-12">
-          <CardStudyItem 
-            card = {currentCard}
-            cardCount = {cardCount} 
-            flipEvent={flipCardHandler} 
-            nextEvent={nextCardHandler} 
-            restartEvent={restartCardsHandler}  
-          />
-        </div>
-        </span>
-      }
-    </div>
-  );
+          <span>
+            <BreadCrumb crumb2={deck.name} crumb3="Study"></BreadCrumb>
+          <div className="col-12 bg-light">
+            <h1>{deck.name}: Study</h1>
+          </div>
+          <div className="col-12">
+            <CardStudyItem 
+              card = {currentCard}
+              cardCount = {cardCount} 
+              flipEvent={flipCardHandler} 
+              nextEvent={nextCardHandler} 
+              restartEvent={restartCardsHandler}  
+            />
+          </div>
+          </span>
+        }
+      </div>
+    ); 
+  } else { if ((cardCount != undefined) && (cardCount <= 2))
+    return (
+      <div>
+        <h2>Not enough cards.</h2>
+        <p>You need at least 3 cards to study. There are {cardCount} cards in this deck.</p>
+        <CreateCardButton deckId={deck.id}></CreateCardButton>
+      </div>
+    ); else 
+    return (<h4>Loading...</h4>);
+
+  }
 }
 
 export default DeckStudy;

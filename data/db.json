@@ -24,6 +24,11 @@
       "id": 29,
       "name": "Water",
       "description": "deck in water supply (h20)  \nexplaining that water is the essence of survival"
+    },
+    {
+      "name": "Lighting Deck",
+      "description": "This is a deck about lighting",
+      "id": 30
     }
   ],
   "cards": [
@@ -199,6 +204,18 @@
       "back": "Test 6th card back",
       "deckId": 23,
       "id": 40
+    },
+    {
+      "front": "this is card one - front",
+      "back": "this is card one - back",
+      "deckId": 30,
+      "id": 41
+    },
+    {
+      "front": "Lighting front",
+      "back": "Lighting back",
+      "deckId": 30,
+      "id": 42
     }
   ]
 }

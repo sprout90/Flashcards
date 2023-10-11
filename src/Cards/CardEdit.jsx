@@ -147,7 +147,6 @@ function CardEdit({ createCardEvent, saveCardEvent }) {
             <button type="submit" className="btn btn-primary">{saveBtnText}</button>
           </div>
       </form> 
-      <p>{formData.front}</p>
     </div>
   )
 }
