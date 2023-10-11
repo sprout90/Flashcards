@@ -58,11 +58,110 @@
       "id": 5
     },
     {
-      "cards": [],
+      "id": 7,
       "front": "b",
       "back": "b",
-      "deckId": 1,
-      "id": 7
+      "deckId": "1"
+    },
+    {
+      "front": "computer front",
+      "back": "computer back",
+      "deckId": 15,
+      "id": 8
+    },
+    {
+      "front": "what are computers",
+      "back": "big calculators",
+      "deckId": 15,
+      "id": 9
+    },
+    {
+      "front": "what can computers do",
+      "back": "play games",
+      "deckId": 15,
+      "id": 10
+    },
+    {
+      "front": "where can I learn more about computers",
+      "back": "library",
+      "deckId": 15,
+      "id": 11
+    },
+    {
+      "front": "what are bits",
+      "back": "parts of a byte",
+      "deckId": 15,
+      "id": 12
+    },
+    {
+      "front": "front save state",
+      "back": "back save state",
+      "deckId": 15,
+      "id": 13
+    },
+    {
+      "front": "what are monitors",
+      "back": "displays for computers",
+      "deckId": 23,
+      "id": 14
+    },
+    {
+      "front": "what colors do monitors support",
+      "back": "all of them",
+      "deckId": 23,
+      "id": 15
+    },
+    {
+      "front": "what sizes do monitors come in",
+      "back": "all sizes",
+      "deckId": 23,
+      "id": 16
+    },
+    {
+      "front": "this is the front",
+      "back": "this is the back",
+      "deckId": 23,
+      "id": 17
+    },
+    {
+      "front": "form data from of card",
+      "back": "form data back of card",
+      "deckId": 23,
+      "id": 19
+    },
+    {
+      "front": "monitor shape?",
+      "back": "flat panel, or curved",
+      "deckId": 23,
+      "id": 24
+    },
+    {
+      "id": 29,
+      "front": "what is water",
+      "back": "h2o is the chemical makeup",
+      "deckId": "29"
+    },
+    {
+      "id": 30,
+      "front": "what is water ",
+      "back": "h20 is fun"
+    },
+    {
+      "id": 31,
+      "front": "water test front",
+      "back": "water test back",
+      "deckId": "29"
+    },
+    {
+      "id": 32,
+      "front": "do you like water (front)",
+      "back": "yes, we can swim in it (back)"
+    },
+    {
+      "id": 33,
+      "front": "monitor card front",
+      "back": "monitor card back",
+      "deckId": "23"
     }
   ]
 }

@@ -7,16 +7,14 @@ import DeckStudyButton from "./DeckStudyButton";
 import DeckEditButton from "./DeckEditButton";
 import CardList from "../Cards/CardList";
 import CreateCardButton from "../Cards/CreateCardButton";
-import { readDeck } from "../utils/api";
+import { readDeck, deleteCard } from "../utils/api";
 
-function DeckView( { deleteDeckEvent, index } ) {
+function DeckView( { deleteDeckEvent } ) {
  
   const {deckId} = useParams(); 
   const [deck, setDeck] = useState({});
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(undefined);
-
-  console.log("deckId", deckId)
 
   // populate primary deck and card stack properties
   useEffect(() => {
@@ -44,11 +42,24 @@ function DeckView( { deleteDeckEvent, index } ) {
   };
 }, []);
 
-const deleteCardHandler = (cardId, indexToDelete) => {
+const deleteCardHandler = (cardId) => {
 
-  // remove deck where not equal to received indexToDelete parameter, and set state
-  const currentCards = cards.filter((card, index) => index !== indexToDelete);
+  // remove card where not equal to received cardId parameter, and set state
+  const currentCards = cards.filter((card, index) => { return card.id != cardId } );
+    
+  // remove card from database
+  const abortController = new AbortController();
+  const deleteCardPromise = deleteCard(cardId, abortController.signal);
+    deleteCardPromise.then().catch(setError);
+
+  // update card array and kick-off reload
   setCards(currentCards); 
+  
+  return () => {
+     abortController.abort();
+   };
+
+
 };
 
 

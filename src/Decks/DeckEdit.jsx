@@ -7,7 +7,7 @@ function DeckEdit({ createDeckEvent, saveDeckEvent }) {
   const {deckId} = useParams();
   const { path } = useRouteMatch();
   const history = useHistory();
-  const {error, setError} = useState(undefined);
+  const [error, setError] = useState(undefined);
   
   let crumb2;
   let crumb3; 

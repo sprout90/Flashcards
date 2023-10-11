@@ -8,7 +8,7 @@ function CardDeleteButton({ deleteCardEvent, cardId, index }){
         <button name="delete" onClick={() => {
             if (window.confirm("Delete this card?\nYou will not be able to recover it.")){
                 deleteCardEvent(cardId, index);
-                history.push("/");
+            //    history.push("/");
                 } 
             }} className="btn btn-danger p-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">

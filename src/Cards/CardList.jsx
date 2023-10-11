@@ -8,7 +8,7 @@ function CardList({ deckId, cards, deleteCardEvent }) {
     if (cards.length > 0) {
         return ( 
             cards.map((card, index) =>  
-                <CardListItem deckId={deckId} card={card} deleteCardEvent={deleteCardEvent} index={index} key={index} />
+                <CardListItem deckId={deckId} card={card} deleteCardEvent={deleteCardEvent} key={index} />
             )
         );
     } else {

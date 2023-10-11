@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CardDeleteButton from "./CardDeleteButton"
 import "../App.css";
 
-function CardListItem({ deckId, card, deleteCardEvent, index}) {
+function CardListItem({ deckId, card, deleteCardEvent}) {
 
    return (  
 
@@ -27,7 +27,7 @@ function CardListItem({ deckId, card, deleteCardEvent, index}) {
                         &nbsp;Edit 
                     </Link>
                     &nbsp;
-                    <CardDeleteButton deleteCardEvent={() => deleteCardEvent(index)} ></CardDeleteButton>
+                    <CardDeleteButton deleteCardEvent={() => deleteCardEvent(card.id)} ></CardDeleteButton>
                 </div>
                 </div>
             </div>

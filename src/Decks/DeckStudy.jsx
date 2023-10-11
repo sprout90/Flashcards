@@ -13,6 +13,10 @@ function DeckStudy( ) {
   const [cards, setCards] = useState([]);
   const [currentCard, setCurrentCard] = useState({});
   const [error, setError] = useState(undefined);
+  let cardCount = 0;
+  let mergedCard = {};
+
+  //TODO: Fix load error when 0 cards defined.
 
   // populate primary deck and card stack properties
   useEffect(() => {
@@ -28,9 +32,15 @@ function DeckStudy( ) {
         setDeck(studyDeck);
         setCards(studyCards);
    
-        
-        const initCard = initializeCard(0, true, false, studyCards[0].front);
-        const mergedCard = {...studyCards[0], ...initCard};
+        const cardCount = studyCards.reduce((counter) => counter+1, 0)
+        const initFirstCardText = (cardCount > 0) ? studyCards[0].front : "";
+        const initFirstCard = initializeCard(0, true, false, initFirstCardText);
+        if (cardCount > 0) {
+          mergedCard = {...studyCards[0], ...initFirstCard};
+        } else {
+          mergedCard = { initFirstCard };
+        }
+
         setCurrentCard(mergedCard);
       })
       .catch(setError);
@@ -101,7 +111,7 @@ function DeckStudy( ) {
     return {index: 0, frontFacing: true, lastCard: false, displayText: "", loaded: true};
   }
 
-  const cardCount = cards.reduce((counter) => counter+1, 0)
+  
   
   if (currentCard.loaded === true){
     if (cardCount > 2) {

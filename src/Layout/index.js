@@ -83,8 +83,8 @@ const saveDeckHandler = (saveDeck) => {
   
   // remove deck from database
   const abortController = new AbortController();
-  const deckDeckPromise = deleteDeck(deckId, abortController.signal);
-    deckDeckPromise.then().catch(setError);
+  const deleteDeckPromise = deleteDeck(deckId, abortController.signal);
+    deleteDeckPromise.then().catch(setError);
 
   // update deck array and kick-off reload
   setDecks(currentDecks); 
@@ -96,24 +96,38 @@ const saveDeckHandler = (saveDeck) => {
  };
 
 
- const createCardHandler = () => {
+ const createCardHandler = (deckId, newCard) => {
+  const abortController = new AbortController(); 
 
+  console.log("new card", newCard)
+  const cardPromise = createCard(deckId, newCard, abortController.signal);
+     cardPromise.then((result) => { 
+      console.log("new card result", result)
+      const url = `/decks/${deckId}/cards/new`
+      history.push({pathname: url, state: {reload: true}});
+    })
+     .catch(setError);
+
+  return () => {
+    abortController.abort();
+  };
  }
 
  const saveCardHandler = (deckId, saveCard) => {
+  saveCard.deckId = deckId;
   console.log("updating card", saveCard)
   const abortController = new AbortController();
 
-   const cardPromise = updateCard(deckId, saveCard, abortController.signal);
-      cardPromise.then().catch(setError);
+   const cardPromise = updateCard(saveCard, abortController.signal);
+      cardPromise.then(() => {
+        history.push(`/decks/${deckId}`);
+      })
+      .catch(setError);
 
    return () => {
      abortController.abort();
    };
  }
-
-
-
 
   return (
     <div>
