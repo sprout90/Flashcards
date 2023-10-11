@@ -9,7 +9,6 @@ function CardEdit({ createCardEvent, saveCardEvent }) {
   const history = useHistory();
   const location = useLocation();
   const [deck, setDeck] = useState(undefined);
-  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const [error, setError] = useState(undefined);
 
   
@@ -27,8 +26,9 @@ function CardEdit({ createCardEvent, saveCardEvent }) {
   const [formData, setFormData] = useState({ ...initialFormState });
   if ((location.state && location.state.reload) != undefined && (location.state.reload == true)){
     location.state.reload = false;
+    
     setFormData({ ...initialFormState });
-    forceUpdate();
+    console.log("reseting state", formData.front)
   }
 
   // populate primary deck and card stack properties
@@ -147,8 +147,9 @@ function CardEdit({ createCardEvent, saveCardEvent }) {
             <button type="submit" className="btn btn-primary">{saveBtnText}</button>
           </div>
       </form> 
+      <p>{formData.front}</p>
     </div>
-  );
+  )
 }
 
 export default CardEdit;

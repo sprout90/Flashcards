@@ -10,14 +10,15 @@ function CardStudyItem({ card, cardCount, flipEvent, nextEvent, restartEvent }) 
     let displayRestart = false;
     const cardNumber = card.index + 1;
 
-    if (card.frontFacing === false) {
+   
+    if ((card.frontFacing === false) && (card.lastCard === false)){
         displayNext = true;
     } 
 
     if (card.lastCard) {
-        displayRestart = true;
-    } else {
-        displayRestart = false;
+        if (card.frontFacing === false){
+            displayRestart = true;
+        }
     }
  
     // TODO: Replace Restart button with Windows.confirm() to appear after last card is flipped.

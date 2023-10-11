@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "../App.css";
 import { readDeck } from "../utils/api";
 import CardStudyItem from "../Cards/CardStudyItem";
+import CreateCardButton from "../Cards/CreateCardButton";
 import BreadCrumb from "../Layout/Breadcrumb";
 import ErrorMessage from "../Layout/ErrorMessage";
 
@@ -10,8 +11,12 @@ function DeckStudy( ) {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
   const [cards, setCards] = useState([]);
-  const [currentCard, setCurrentCard] = useState(undefined);
+  const [currentCard, setCurrentCard] = useState({});
   const [error, setError] = useState(undefined);
+  let cardCount = 0;
+  let mergedCard = {};
+
+  //TODO: Fix load error when 0 cards defined.
 
   // populate primary deck and card stack properties
   useEffect(() => {
@@ -26,13 +31,18 @@ function DeckStudy( ) {
         const studyCards = result.cards;
         setDeck(studyDeck);
         setCards(studyCards);
+       
+        const cardCount = studyCards.reduce((counter) => counter+1, 0)
+        console.log("card count",  cardCount)
    
-        
-        const initCard = initializeCard(0, true, false, studyCards[0].front);
-        const mergedCard = {...studyCards[0], ...initCard};
+        const initFirstCardText = (cardCount > 0) ? studyCards[0].front : "";
+        const initFirstCard = initializeCard(0, true, false, initFirstCardText);
+       
+        mergedCard = {...studyCards[0], ...initFirstCard};
         setCurrentCard(mergedCard);
       })
       .catch(setError);
+
     }
 
     LoadStudyDeck();
@@ -65,7 +75,7 @@ function DeckStudy( ) {
   };
 
   const nextCardHandler = (currentCardIndex) => {
-
+ 
     const initCard = initializeEmptyCard();
     const nextCardIndex = currentCardIndex + 1;
     const cardCount = cards.reduce((counter) => counter+1, 0)
@@ -76,6 +86,7 @@ function DeckStudy( ) {
     initCard.index = nextCardIndex;
     const studyCard = cards[nextCardIndex];
     const mergedCard = {...studyCard, ...initCard};
+    console.log("current card", mergedCard)
     setCurrentCard(mergedCard);
    
   };
@@ -90,39 +101,54 @@ function DeckStudy( ) {
   // return an initialized card object containing only supplemental state values
   function initializeCard(cardIndex, frontFacing, lastCard, displayText){
 
-    return {index: cardIndex, frontFacing: frontFacing, lastCard: lastCard, displayText: displayText}
+    return {index: cardIndex, frontFacing: frontFacing, lastCard: lastCard, displayText: displayText, loaded: true}
   }
 
   function initializeEmptyCard(){
 
-    return {index: 0, frontFacing: true, lastCard: false, displayText: ""};
+    return {index: 0, frontFacing: true, lastCard: false, displayText: "", loaded: true};
   }
 
-  const cardCount = cards.reduce((counter) => counter+1, 0)
-
-  return (
-    <div className="container">
   
-      {currentCard && 
+  console.log("card count : 2nd",  cardCount)
+  if (currentCard.loaded === true){
+    if (cardCount > 2) {
+        return (
+          <div className="container">
+        
+            {currentCard && 
 
-        <span>
-          <BreadCrumb crumb2={deck.name} crumb3="Study"></BreadCrumb>
-        <div className="col-12 bg-light">
-          <h1>{deck.name}: Study</h1>
-        </div>
-        <div className="col-12">
-          <CardStudyItem 
-            card = {currentCard}
-            cardCount = {cardCount} 
-            flipEvent={flipCardHandler} 
-            nextEvent={nextCardHandler} 
-            restartEvent={restartCardsHandler}  
-          />
-        </div>
-        </span>
-      }
-    </div>
-  );
+              <span>
+                <BreadCrumb crumb2={deck.name} crumb3="Study"></BreadCrumb>
+              <div className="col-12 bg-light">
+                <h1>{deck.name}: Study</h1>
+              </div>
+              <div className="col-12">
+                <CardStudyItem 
+                  card = {currentCard}
+                  cardCount = {cardCount} 
+                  flipEvent={flipCardHandler} 
+                  nextEvent={nextCardHandler} 
+                  restartEvent={restartCardsHandler}  
+                />
+              </div>
+              </span>
+            }
+          </div>
+        );
+    } else {
+        return (
+          <div>
+            <h2>Not enough cards.</h2>
+            <p>You need at least 3 cards to study. There are {cardCount} cards in this deck.</p>
+            <CreateCardButton deckId={deck.id}></CreateCardButton>
+          </div>
+        );
+    }
+  } else {
+    return <h4>Loading cards...</h4>
+  }
+
 }
 
 export default DeckStudy;

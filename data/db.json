@@ -59,8 +59,8 @@
     },
     {
       "id": 7,
-      "front": "b",
-      "back": "b",
+      "front": "front",
+      "back": "back",
       "deckId": 1
     },
     {
@@ -112,10 +112,10 @@
       "id": 15
     },
     {
+      "id": 16,
       "front": "what sizes do monitors come in",
-      "back": "all sizes",
-      "deckId": 23,
-      "id": 16
+      "back": "all sizes like 24\" or 80\"",
+      "deckId": 23
     },
     {
       "id": 17,
@@ -157,6 +157,48 @@
       "front": "monitor card front",
       "back": "monitor card back",
       "deckId": 23
+    },
+    {
+      "front": "monitors are cool",
+      "back": "monitors are cool back",
+      "deckId": 23,
+      "id": 34
+    },
+    {
+      "front": "Test new card",
+      "back": "Test new card back",
+      "deckId": 23,
+      "id": 35
+    },
+    {
+      "front": "Test 2nd card",
+      "back": "Test 2nd card back",
+      "deckId": 23,
+      "id": 36
+    },
+    {
+      "front": "Test 3rd card",
+      "back": "Test 3rd card back",
+      "deckId": 23,
+      "id": 37
+    },
+    {
+      "front": "Test 4th card",
+      "back": "Test 4th card back",
+      "deckId": 23,
+      "id": 38
+    },
+    {
+      "front": "Test 5th card",
+      "back": "Test 5th card back",
+      "deckId": 23,
+      "id": 39
+    },
+    {
+      "front": "Test 6th card",
+      "back": "Test 6th card back",
+      "deckId": 23,
+      "id": 40
     }
   ]
 }
