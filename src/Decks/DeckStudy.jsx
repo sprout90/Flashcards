@@ -46,7 +46,12 @@ function DeckStudy( ) {
 
 
   if (error) {
-    return <ErrorMessage error={error}></ErrorMessage>;
+    return (<div>
+      <h2>Not enough cards.</h2>
+      <p>You need at least 3 cards to study. There are 0 cards in this deck.</p>
+      <CreateCardButton deckId={deck.id}></CreateCardButton>
+      </div> 
+      );
   }
 
   // define event actions for flip
