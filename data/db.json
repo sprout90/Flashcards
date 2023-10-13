@@ -210,6 +210,48 @@
       "front": "This is the front",
       "back": "This is the back!",
       "deckId": 2
+    },
+    {
+      "front": "The is the front",
+      "back": "This is the back",
+      "deckId": 15,
+      "id": 42
+    },
+    {
+      "front": "front side",
+      "back": "back side",
+      "deckId": 30,
+      "id": 43
+    },
+    {
+      "front": "front side 2",
+      "back": "back side 2",
+      "deckId": 30,
+      "id": 44
+    },
+    {
+      "front": "front side 3",
+      "back": "front side 3",
+      "deckId": 30,
+      "id": 45
+    },
+    {
+      "front": "hello front",
+      "back": "hello back",
+      "deckId": 29,
+      "id": 46
+    },
+    {
+      "id": 47,
+      "front": "trying to fix useEffect (editing)",
+      "back": "adding cardId, deckId (editing)",
+      "deckId": 30
+    },
+    {
+      "front": "useEffect take 2",
+      "back": "useEffect take 2 back",
+      "deckId": 30,
+      "id": 48
     }
   ]
 }

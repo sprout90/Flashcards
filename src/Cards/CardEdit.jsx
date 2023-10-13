@@ -1,13 +1,12 @@
-import React, {useState, useEffect, useReducer} from "react";
-import { useParams, useRouteMatch, useHistory, useLocation} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import { useParams, useRouteMatch, useHistory} from "react-router-dom";
 import Breadcrumb from "../Layout/Breadcrumb";
 import { readDeck, readCard } from "../utils/api";
 
 function CardEdit({ createCardEvent, saveCardEvent }) {
-  const {deckId, cardId, reload} = useParams();
-  const { url, path } = useRouteMatch();
+  const {deckId, cardId} = useParams();
+  const { url } = useRouteMatch();
   const history = useHistory();
-  const location = useLocation();
   const [deck, setDeck] = useState(undefined);
   const [error, setError] = useState(undefined);
 
@@ -24,13 +23,7 @@ function CardEdit({ createCardEvent, saveCardEvent }) {
     back: "",
   };
   const [formData, setFormData] = useState({ ...initialFormState });
-  if ((location.state && location.state.reload) != undefined && (location.state.reload == true)){
-    location.state.reload = false;
-    
-    setFormData({ ...initialFormState });
   
-  }
-
   // populate primary deck and card stack properties
   useEffect(() => {
 
@@ -65,7 +58,7 @@ function CardEdit({ createCardEvent, saveCardEvent }) {
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, [deckId, cardId]);
 
   if (deck) {
     crumb2 = deck.name;
@@ -106,12 +99,14 @@ function CardEdit({ createCardEvent, saveCardEvent }) {
       </div>
       <form name="create" onSubmit={(event) => {
           event.preventDefault();
-          if (saveBtnText == "Save"){
+          if (saveBtnText === "Save"){
             createCardEvent(deckId, formData);
           } else {
             saveCardEvent(deckId, formData)
           }
-        } }
+          setFormData({ ...initialFormState });
+        }
+       }
       >
           <label htmlFor="front">Front<br/>
             <textarea 
