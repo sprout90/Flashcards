@@ -8,6 +8,3 @@ Provide practical application of real-world React application techniques that ar
 
 ## My Focus
 The focus on this exercise was to build out a fully-functional React application from scratch to support essential Flash card application features with database connectivity. 
-
-## Where Can I See It?
-This is still a work-in-progress. But, I hope to publish a link soon. 
