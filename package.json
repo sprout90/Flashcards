@@ -5,7 +5,7 @@
   "description": "React flashcard application demonstrating REST API integration, routing, state management, and deck/card CRUD operations",
   "repository": {
     "type": "git",
-    "url": "YOUR-GITHUB-REPOSITORY-URL"
+    "url": "https://github.com/sprout90/Flashcards.git"
   },
   "keywords": [
     "react",
